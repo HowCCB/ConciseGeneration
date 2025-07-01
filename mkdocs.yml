@@ -1,0 +1,8 @@
+site_name: Concise Generation Guided
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Char1: chapter1.md
+  - Char2: chapter2.md
+  - Char3: chapter3.md
