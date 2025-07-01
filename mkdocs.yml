@@ -1,0 +1,9 @@
+site_name: Concise Generation Guided
+theme:
+  name: material
+nav:
+  - 首页: index.md
+  - Diffusion 基础: chapter1.md
+  - 发展历程: chapter2.md
+  - 进阶技术: chapter3.md
+  - 应用案例: chapter4.md
