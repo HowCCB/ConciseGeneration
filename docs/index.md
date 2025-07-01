@@ -2,7 +2,7 @@
 
 更加值得提到的是，许多同学或许并没有深入科研的想法，选择AI是希望得到一个Master's degree，而有一些内容在理论上的理解有一定的门坎，这些门坎或许让大家对自己正在做的事情没有充足的自信。这让我想要做这件事情，于是有了这本Notebook。我先来介绍一下这本Notebook的特性。
 
-+ 涵盖Generative Model的几乎所有你可能用到的（AE/VAE/VQ-VAE/DDPM/DDIM/flow_matching/Stable Diffusion）
++ 涵盖Generative Model的几乎所有你可能用到的（AE/VAE/VQ-VAE/DDPM/DDIM/flow_matching/Stable Diffusion）（classifier diffusion/classifier free diffusion/diffusion posterior sampling）（ContrlNet/condition generation）（latent interpolation/ddim inversion）
 + Keep it stupid，仅仅展示和代码相关的部分（但是会保证阅读的连贯性），忽略掉论文中大量在实践中无用的证明，从代码的角度，展示出对你理解有作用的部分。
 + 从最stupid的代码开始丰富，逐步加入Openai/Meta等开源的repo中使用到的tech code。（工程代码在原理上也是如此！只不过...是为了...）
 
