@@ -1,27 +1,6 @@
 site_name: Concise Generation Guided
-# 使用 Material 主题并自定义现代风格
 theme:
   name: material
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: pink
-    - scheme: slate
-      primary: indigo
-      accent: pink
-      toggle:
-        icon: material/weather-night
-        name: 切换夜间模式
-  font:
-    text: Roboto
-    code: Roboto Mono
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - navigation.top
-    - search.suggest
-    - search.highlight
-    - content.code.annotate
 nav:
   - Home: index.md
   - Char1: chapter1.md
