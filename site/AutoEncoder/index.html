@@ -11,16 +11,16 @@
       
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Concise Generation Guided</title>
+        <title>AutoEncoder - Concise Generation Guided</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
       
 
@@ -39,7 +39,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,7 +69,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Concise Generation Guided" class="md-header__button md-logo" aria-label="Concise Generation Guided" data-md-component="logo">
+    <a href=".." title="Concise Generation Guided" class="md-header__button md-logo" aria-label="Concise Generation Guided" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -89,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              写在前面
+              AutoEncoder
             
           </span>
         </div>
@@ -167,7 +167,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Concise Generation Guided" class="md-nav__button md-logo" aria-label="Concise Generation Guided" data-md-component="logo">
+    <a href=".." title="Concise Generation Guided" class="md-nav__button md-logo" aria-label="Concise Generation Guided" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -182,17 +182,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -203,7 +196,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -215,7 +207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="chapter1.md" class="md-nav__link">
+      <a href="../chapter1.md" class="md-nav__link">
         
   
   
@@ -237,7 +229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="chapter2.md" class="md-nav__link">
+      <a href="../chapter2.md" class="md-nav__link">
         
   
   
@@ -259,7 +251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="chapter3.md" class="md-nav__link">
+      <a href="../chapter3.md" class="md-nav__link">
         
   
   
@@ -306,27 +298,9 @@
 
 
 
-  <h1>写在前面</h1>
+  <h1>AutoEncoder</h1>
 
-<p>从我身边观察到的，越来越多的同学选择AI作为自己读取更高学历的方向。然而事实是，即使AI工具非常好用的今天，仍旧有许多同学难以使用它们cover自己的科研工作。</p>
-<p>更加值得提到的是，许多同学或许并没有深入科研的想法，选择AI是希望得到一个Master's degree，而有一些内容在理论上的理解有一定的门坎，这些门坎或许让大家对自己正在做的事情没有充足的自信。这让我想要做这件事情，于是有了这本Notebook。我先来介绍一下这本Notebook的特性。</p>
-<ul>
-<li>涵盖Generative Model的几乎所有你可能用到的（AE/VAE/VQ-VAE/DDPM/DDIM/flow_matching/Stable Diffusion）（classifier diffusion/classifier free diffusion/diffusion posterior sampling）（ContrlNet/condition generation）（latent interpolation/ddim inversion）（SDE/ODE）</li>
-<li>Keep it stupid，仅仅展示和代码相关的部分（但是会保证阅读的连贯性），忽略掉论文中大量在实践中无用的证明，从代码的角度，展示出对你理解有作用的部分。</li>
-<li>从最stupid的代码开始丰富，逐步加入Openai/Meta等开源的repo中使用到的tech code。（工程代码在原理上也是如此！只不过...是为了...）</li>
-</ul>
-<p>如果你认真阅读这本Notebook，可以对Generative Model有一个总体的了解，同时对实现细节会更加自信（<strong>我希望在读完以后，你会说：我确定在代码中，大家都是这样做的，或许和paper中一样，或许和paper中有一些区别，因此我更加有信心了</strong>）。或许当你看完整个Notebook，会更加有自信开展自己正在进行的工作。</p>
-<p>同时，必须要声明的一点是，这本Notebook中，不包含任何学术上的建议。为了理解方便，我会忽略许多细节，但是这对你理解整个流程或者代码或许是有帮助的。</p>
-<p>在char1中，我们介绍了需要准备的数据，我们希望这个数据是实用的（不要离自己的科研工作太远，比如选用MNIST手写数字集我认为就实在偏离太远，对于你的理解并不一定会有太多的帮助），同时也是尽可能简化的（不选LAION-5B作为学习数据集，因为这个它实在太大）。</p>
-<p>所有的一切，都是一个目的，希望能用最短的时间，了解学术和工程上的实现，让你对正在做的事情有充足的信息，尽快完成您的毕业工作。</p>
-<p>时间匆忙，难免疏漏，感谢你通过这个邮箱与我讨论：liushr6688@gmail.com</p>
-<p>打赏可以扫这里，也可以加入讨论：</p>
-<div style="display: flex; gap: 20px; align-items: center;">
-  <img src="506c214d3415c1f4c6f69ca69a8b7ed.jpg" alt="alt text" width="200"/>
-  <img src="3371047bf6c7fab8317e819fb04db0f.jpg" alt="alt text" width="200"/>
-    <img src="05e66ec06ac6fa4cc4436b0285e4dbe.jpg" alt="alt text" width="200"/>
 
-</div>
 
 
 
@@ -375,10 +349,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>

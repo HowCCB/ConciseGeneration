@@ -3,6 +3,6 @@ theme:
   name: material
 nav:
   - 写在前面: index.md
-  - Char1: chapter1.md
+  - Char1: AitoEncoder.md
   - Char2: chapter2.md
   - Char3: chapter3.md
