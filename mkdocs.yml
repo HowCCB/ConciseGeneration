@@ -3,10 +3,10 @@ theme:
   name: material
 nav:
   - 写在前面: index.md
-  - AutoEncoder(AE): AutoEncoder.md
-  - Variational AutoEncoder(VAE): VAE.md
-  - Vector Quantized Variational AutoEncoder(VQVAE): VQVAE.md
-  - Generative Adversarial Networks(GAN): GAN.md
+  - AE: AutoEncoder.md
+  - VAE: VAE.md
+  - VQVAE: VQVAE.md
+  - GAN: GAN.md
   - Diffusion series:
       - DDPM: DDPM.md
       - DDIM: DDIM.md
