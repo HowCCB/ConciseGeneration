@@ -1,6 +1,10 @@
 site_name: Concise Generation Guided
 theme:
   name: material
+markdown_extensions:
+  - pymdownx.arithmatex
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 nav:
   - 写在前面: index.md
   - AE: AutoEncoder.md
