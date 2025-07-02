@@ -758,30 +758,20 @@
 <h1 id="variational-autoencoders-vae">变分自编码器（Variational Autoencoders, VAE）</h1>
 <p>变分自编码器（VAE）是在<a href="https://arxiv.org/pdf/1312.6114">Auto-Encoding Variational Bayes</a>这篇论文中提出的，是一种基于概率图模型和变分推断的生成模型。</p>
 <h2 id="_1">基本原理</h2>
-<p>VAE 假设观测数据 <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 由潜变量 <span class="arithmatex"><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span> 生成，目标是最大化观测数据的边缘似然 <span class="arithmatex"><span class="MathJax_Preview">p(x)</span><script type="math/tex">p(x)</script></span>。由于直接计算 <span class="arithmatex"><span class="MathJax_Preview">p(x)</span><script type="math/tex">p(x)</script></span> 很困难，VAE 采用变分推断，引入近似后验 <span class="arithmatex"><span class="MathJax_Preview">q_\phi(z|x)</span><script type="math/tex">q_\phi(z|x)</script></span>，并最大化证据下界（ELBO）：</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>VAE 假设观测数据 <span class="arithmatex">\(x\)</span> 由潜变量 <span class="arithmatex">\(z\)</span> 生成，目标是最大化观测数据的边缘似然 <span class="arithmatex">\(p(x)\)</span>。由于直接计算 <span class="arithmatex">\(p(x)\)</span> 很困难，VAE 采用变分推断，引入近似后验 <span class="arithmatex">\(q_\phi(z|x)\)</span>，并最大化证据下界（ELBO）：</p>
+<div class="arithmatex">\[
 \log p_\theta(x) \geq \mathbb{E}_{q_\phi(z|x)} [\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))
-</div>
-<script type="math/tex; mode=display">
-\log p_\theta(x) \geq \mathbb{E}_{q_\phi(z|x)} [\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))
-</script>
-</div>
+\]</div>
 <p>其中：
-- <span class="arithmatex"><span class="MathJax_Preview">p_\theta(x|z)</span><script type="math/tex">p_\theta(x|z)</script></span>：解码器（生成器），给定潜变量 <span class="arithmatex"><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span> 生成数据 <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>
-- <span class="arithmatex"><span class="MathJax_Preview">q_\phi(z|x)</span><script type="math/tex">q_\phi(z|x)</script></span>：编码器（推断器），给定数据 <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 推断潜变量 <span class="arithmatex"><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span>
-- <span class="arithmatex"><span class="MathJax_Preview">p(z)</span><script type="math/tex">p(z)</script></span>：先验分布，通常为标准正态分布 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{N}(0, I)</span><script type="math/tex">\mathcal{N}(0, I)</script></span>
-- <span class="arithmatex"><span class="MathJax_Preview">D_{KL}</span><script type="math/tex">D_{KL}</script></span>：KL 散度，用于衡量两个分布的差异</p>
+- <span class="arithmatex">\(p_\theta(x|z)\)</span>：解码器（生成器），给定潜变量 <span class="arithmatex">\(z\)</span> 生成数据 <span class="arithmatex">\(x\)</span>
+- <span class="arithmatex">\(q_\phi(z|x)\)</span>：编码器（推断器），给定数据 <span class="arithmatex">\(x\)</span> 推断潜变量 <span class="arithmatex">\(z\)</span>
+- <span class="arithmatex">\(p(z)\)</span>：先验分布，通常为标准正态分布 <span class="arithmatex">\(\mathcal{N}(0, I)\)</span>
+- <span class="arithmatex">\(D_{KL}\)</span>：KL 散度，用于衡量两个分布的差异</p>
 <h2 id="_2">目标函数</h2>
 <p>VAE 的损失函数即为负的 ELBO：</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \mathcal{L}(\theta, \phi; x) = -\mathbb{E}_{q_\phi(z|x)} [\log p_\theta(x|z)] + D_{KL}(q_\phi(z|x) \| p(z))
-</div>
-<script type="math/tex; mode=display">
-\mathcal{L}(\theta, \phi; x) = -\mathbb{E}_{q_\phi(z|x)} [\log p_\theta(x|z)] + D_{KL}(q_\phi(z|x) \| p(z))
-</script>
-</div>
+\]</div>
 <ul>
 <li>第一项是重构误差，衡量生成样本与原始样本的相似度</li>
 <li>第二项是正则项，使编码分布接近先验分布</li>
@@ -789,7 +779,9 @@
 <h2 id="_3">代码实现</h2>
 <p>（此处留空，后续可补充 PyTorch/TensorFlow 等实现代码）</p>
 <hr />
-<p>如需补充代码或详细推导，请告知！</p>
+<blockquote>
+<p>如果公式仍无法正常显示，请确保 mkdocs serve 后强制刷新浏览器缓存（Ctrl+F5），并确认 mathjax CDN 能正常访问。</p>
+</blockquote>
 
 
 
@@ -843,7 +835,9 @@
     
       <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.zhimg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
