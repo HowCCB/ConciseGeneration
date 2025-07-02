@@ -18,8 +18,8 @@
 
 打赏可以扫这里，也可以加入讨论：
 <div style="display: flex; gap: 20px; align-items: center;">
-  <img src="506c214d3415c1f4c6f69ca69a8b7ed.jpg" alt="alt text" width="200"/>
-  <img src="3371047bf6c7fab8317e819fb04db0f.jpg" alt="alt text" width="200"/>
-    <img src="05e66ec06ac6fa4cc4436b0285e4dbe.jpg" alt="alt text" width="200"/>
+  <img src="./misc/506c214d3415c1f4c6f69ca69a8b7ed.jpg" alt="alt text" width="200"/>
+  <img src="./misc/3371047bf6c7fab8317e819fb04db0f.jpg" alt="alt text" width="200"/>
+    <img src="./misc/05e66ec06ac6fa4cc4436b0285e4dbe.jpg" alt="alt text" width="200"/>
 
 </div>

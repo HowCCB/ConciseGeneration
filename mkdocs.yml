@@ -3,6 +3,19 @@ theme:
   name: material
 nav:
   - 写在前面: index.md
-  - Char1: AutoEncoder.md
-  - Char2: chapter2.md
-  - Char3: chapter3.md
+  - AE: AutoEncoder: AutoEncoder.md
+  - VAE: Variational AutoEncoder: VAE.md
+  - VQVAE: Vector Quantized Variational AutoEncoder: VQVAE.md
+  - GAN: Generative Adversarial Networks: GAN.md
+  - Diffusion series:
+      - DDPM: DDPM.md
+      - DDIM: DDIM.md
+      - Latent Diffusion: LatentDiffusion.md
+      - Stable Diffusion: StableDiffusion.md
+      - Classifier-Guided Diffusion: ClassifierGuidedDiffusion.md
+      - Classifier-Free Guidance: ClassifierFreeGuidance.md
+      - Diffusion Posterior Sampling: DiffusionPosteriorSampling.md
+  - Flow series:
+      - Normalizing Flows: NormalizingFlows.md
+      - Flow Matching: FlowMatching.md
+      - Rectified Flow Matching: RectifiedFlowMatching.md
