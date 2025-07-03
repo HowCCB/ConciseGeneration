@@ -805,10 +805,10 @@ x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \epsilon_t
 \]</div>
 <p>其中各符号的意义如下：</p>
 <ul>
-<li>$ x_t $：第 $ t $ 步加噪后的图像或数据。</li>
-<li>$ x_{t-1} $：第 $ t-1 $ 步的图像或数据。</li>
-<li>$ \beta_t $：预定义的噪声调度参数（variance schedule），表示第 $ t $ 步添加噪声的比例 [[2]]。</li>
-<li>$ \epsilon_t $：从标准正态分布中采样的噪声项，即 $ \epsilon_t \sim \mathcal{N}(0, I) $ [[6]]。</li>
+<li>$x_t $：第 $ t $ 步加噪后的图像或数据。</li>
+<li>$x_{t-1} $：第 $ t-1 $ 步的图像或数据。</li>
+<li>$\beta_t $：预定义的噪声调度参数（variance schedule），表示第 $ t $ 步添加噪声的比例 [[2]]。</li>
+<li>$\epsilon_t $：从标准正态分布中采样的噪声项，即 $ \epsilon_t \sim \mathcal{N}(0, I) $ [[6]]。</li>
 </ul>
 <p>其中 <span class="arithmatex">\(\epsilon_t \sim \mathcal{N}(0, I)\)</span>，<span class="arithmatex">\(\beta_t\)</span> 是预设的噪声调度表。经过 <span class="arithmatex">\(T\)</span> 步后，<span class="arithmatex">\(x_T\)</span> 近似为标准高斯分布。</p>
 <p>实际上，因为前后两项之间的依赖关系，可以得到<span class="arithmatex">\(xt\)</span>和<span class="arithmatex">\(x_0\)</span>之间的关系，在实际的代码中，也是如此操作的。</p>

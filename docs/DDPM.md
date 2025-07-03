@@ -17,10 +17,10 @@ $$
 
 其中各符号的意义如下：
 
-- $x_t $：第 $ t $ 步加噪后的图像或数据。
-- $x_{t-1} $：第 $ t-1 $ 步的图像或数据。
-- $\beta_t $：预定义的噪声调度参数（variance schedule），表示第 $ t $ 步添加噪声的比例 [[2]]。
-- $\epsilon_t $：从标准正态分布中采样的噪声项，即 $ \epsilon_t \sim \mathcal{N}(0, I) $ [[6]]。
+- $x_t$：第 $ t $ 步加噪后的图像或数据。
+- $x_{t-1}$：第 $ t-1 $ 步的图像或数据。
+- $\beta_t$：预定义的噪声调度参数（variance schedule），表示第 $ t $ 步添加噪声的比例 [[2]]。
+- $\epsilon_t$：从标准正态分布中采样的噪声项，即 $ \epsilon_t \sim \mathcal{N}(0, I) $ [[6]]。
 
 
 
@@ -101,10 +101,3 @@ for t in reversed(range(T)):
 
 ---
 
-## 5. 参考文献
-- [Ho et al., 2020. Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
-- [DDPM 代码实现（PyTorch）](https://github.com/hojonathanho/diffusion)
-
----
-
-DDPM 是现代扩散模型的基础，后续如 DDIM、Stable Diffusion 等均在此基础上发展。
