@@ -72,12 +72,15 @@ $$
 
 ```
 前向过程中，需要掌握的公式：
-$$
+
+<mark>
 x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
 $$
 
 这个公式就是代码中，给$x_0$进行加噪使用到的公式。
-```
+</mark>
 
 ---
+
+## 2. 反向去噪过程（Reverse Process）
 
