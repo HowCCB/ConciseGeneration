@@ -747,15 +747,12 @@
 </ul>
 <hr />
 <h2 id="1-forward-process">1. 前向加噪过程（Forward Process）</h2>
-<p>前向过程中，需要掌握的公式：</p>
-<p>!!! note "加噪公式"
-    下面这个公式就是代码中给 <span class="arithmatex">\(x_0\)</span> 加噪声时用到的公式：</p>
-<pre><code>$$
+<p>下面这个公式就是代码中给 <span class="arithmatex">\(x_0\)</span> 加噪声时用到的公式：</p>
+<div class="arithmatex">\[
 x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
-$$
-
-后面内容为详细些的解释，可以忽略掉不看。
-</code></pre>
+\]</div>
+<p>后面内容为详细些的解释，可以忽略掉不看。</p>
+<hr />
 <p>前向过程是一个马尔可夫链（Markov Chain）过程。假设原始数据为 <span class="arithmatex">\(x_0\)</span>，每一步加噪如下：</p>
 <div class="arithmatex">\[
 x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
