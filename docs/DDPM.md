@@ -89,3 +89,34 @@ $$
 
 ## 2. 反向去噪过程（Reverse Process）
 
+在 DDPM 的反向去噪过程中，核心目标是逐步从噪声数据中恢复出原始图像。该过程是一个马尔可夫链，每一步都依赖于当前时间步的预测值。反向过程中的分布公式如下：
+
+1. **反向过程的每一步分布**：
+   $$
+   p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))
+   $$
+   其中：
+   - $ \mu_\theta(x_t, t) $ 是模型预测的均值。
+   - $ \Sigma_\theta(x_t, t) $ 是模型预测的方差，通常设为对角矩阵 [[5]]。
+
+2. **均值和方差的具体形式**：
+   根据前向扩散过程的推导，反向过程的均值和方差可以表示为：
+   $$
+   \mu_\theta(x_t, t) = \frac{1}{\sqrt{\alpha_t}} \left( x_t - \frac{1 - \alpha_t}{\sqrt{1 - \bar{\alpha}_t}} \epsilon_\theta(x_t, t) \right)
+   $$
+   $$
+   \Sigma_\theta(x_t, t) = \beta_t I
+   $$
+   其中：
+   - $ \alpha_t = 1 - \beta_t $ 是前向扩散过程中的系数。
+   - $ \bar{\alpha}_t = \prod_{s=1}^t (1 - \beta_s) $ 是累积噪声系数。
+   - $ \epsilon_\theta(x_t, t) $ 是模型预测的噪声项 [[6]]。
+
+3. **初始分布**：
+   反向过程的起始点是从标准正态分布采样的噪声：
+   $$
+   x_T \sim \mathcal{N}(0, I)
+   $$
+   其中 $ x_T $ 是纯噪声输入 [[8]]。
+
+通过这些公式，反向过程能够从纯噪声 $ x_T $ 逐步去噪生成 $ x_{T-1}, x_{T-2}, \cdots, x_0 $，最终得到生成的样本 $ x_0 $ [[10]]。
