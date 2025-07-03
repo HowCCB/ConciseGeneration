@@ -102,10 +102,11 @@ $$
 
 2. **均值和方差的具体形式**：
    根据前向扩散过程的推导，反向过程的均值和方差可以表示为：
+   
    $$
    \mu_\theta(x_t, t) = \frac{1}{\sqrt{\alpha_t}} \left( x_t - \frac{1 - \alpha_t}{\sqrt{1 - \bar{\alpha}_t}} \epsilon_\theta(x_t, t) \right)
    $$
-   
+
    $$
    \Sigma_\theta(x_t, t) = \beta_t I
    $$
