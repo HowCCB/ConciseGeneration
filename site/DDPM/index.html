@@ -727,37 +727,41 @@
 - <strong>反向去噪过程（Reverse Process）</strong>：训练一个神经网络逐步去噪，恢复原始数据。</p>
 <hr />
 <h2 id="1-forward-process">1. 前向加噪过程（Forward Process）</h2>
-<p>前向过程是一个马尔可夫链（Markov Chain）过程。假设原始数据为 x0，每一步加噪如下：</p>
-<pre><code>x_t = sqrt(1 - beta_t) * x_{t-1} + sqrt(beta_t) * epsilon_t
-</code></pre>
+<p>前向过程是一个马尔可夫链（Markov Chain）过程。假设原始数据为 <span class="arithmatex">\(x_0\)</span>，每一步加噪如下：</p>
+<div class="arithmatex">\[
+x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
+\]</div>
 <p>其中各符号的意义如下：</p>
 <ul>
-<li>x_t：第 t 步加噪后的图像或数据。</li>
-<li>x_{t-1}：第 t-1 步的图像或数据。</li>
-<li>beta_t：预定义的噪声调度参数（variance schedule），表示第 t 步添加噪声的比例。</li>
-<li>epsilon_t：从标准正态分布中采样的噪声项，即 epsilon_t ~ N(0, I)。
-经过 T 步后，x_T 近似为标准高斯分布。</li>
+<li><span class="arithmatex">\(x_t\)</span>：第 <span class="arithmatex">\(t\)</span> 步加噪后的图像或数据。</li>
+<li><span class="arithmatex">\(x_{t-1}\)</span>：第 <span class="arithmatex">\(t-1\)</span> 步的图像或数据。</li>
+<li><span class="arithmatex">\(\beta_t\)</span>：预定义的噪声调度参数（variance schedule），表示第 <span class="arithmatex">\(t\)</span> 步添加噪声的比例。</li>
+<li><span class="arithmatex">\(\epsilon_t\)</span>：从标准正态分布中采样的噪声项，即 <span class="arithmatex">\(\epsilon_t \sim \mathcal{N}(0, I)\)</span>。</li>
 </ul>
-<p>实际上，因为前后两项之间的依赖关系，可以得到 x_t 和 x_0 之间的关系，在实际的代码中，也是如此操作的：</p>
-<pre><code>x_t = sqrt(alpha_bar_t) * x_0 + sqrt(1 - alpha_bar_t) * epsilon_t
-</code></pre>
+<p>经过 <span class="arithmatex">\(T\)</span> 步后，<span class="arithmatex">\(x_T\)</span> 近似为标准高斯分布。</p>
+<p>实际上，因为前后两项之间的依赖关系，可以得到 <span class="arithmatex">\(x_t\)</span> 和 <span class="arithmatex">\(x_0\)</span> 之间的关系，在实际的代码中，也是如此操作的：</p>
+<div class="arithmatex">\[
+x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
+\]</div>
 <p>其中：</p>
 <ul>
-<li>x_0：初始的干净图像或数据。</li>
-<li>alpha_bar_t：前向扩散过程中从初始到第 t 步的累积噪声系数，定义为 alpha_bar_t = prod_{s=1}^t (1 - beta_s)。</li>
-<li>epsilon_t：从标准正态分布中采样的噪声项。</li>
+<li><span class="arithmatex">\(x_0\)</span>：初始的干净图像或数据。</li>
+<li><span class="arithmatex">\(\bar{\alpha}_t\)</span>：前向扩散过程中从初始到第 <span class="arithmatex">\(t\)</span> 步的累积噪声系数，定义为 <span class="arithmatex">\(\bar{\alpha}_t = \prod_{s=1}^t (1 - \beta_s)\)</span>。</li>
+<li><span class="arithmatex">\(\epsilon_t\)</span>：从标准正态分布中采样的噪声项。</li>
 </ul>
-<p>x_t 与 x_0 和 x_{t-1} 的分布关系如下：</p>
+<p><span class="arithmatex">\(x_t\)</span> 与 <span class="arithmatex">\(x_0\)</span> 和 <span class="arithmatex">\(x_{t-1}\)</span> 的分布关系如下：</p>
 <ol>
-<li>从 x_0 得到 x_t 的分布：</li>
+<li>从 <span class="arithmatex">\(x_0\)</span> 得到 <span class="arithmatex">\(x_t\)</span> 的分布：</li>
 </ol>
-<pre><code>q(x_t | x_0) = N(x_t; sqrt(alpha_bar_t) * x_0, (1 - alpha_bar_t) * I)
-</code></pre>
+<div class="arithmatex">\[
+q(x_t | x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} x_0, (1 - \bar{\alpha}_t) I)
+\]</div>
 <ol>
-<li>从 x_{t-1} 得到 x_t 的分布：</li>
+<li>从 <span class="arithmatex">\(x_{t-1}\)</span> 得到 <span class="arithmatex">\(x_t\)</span> 的分布：</li>
 </ol>
-<pre><code>q(x_t | x_{t-1}) = N(x_t; sqrt(1 - beta_t) * x_{t-1}, beta_t * I)
-</code></pre>
+<div class="arithmatex">\[
+q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t I)
+\]</div>
 <hr />
 
 

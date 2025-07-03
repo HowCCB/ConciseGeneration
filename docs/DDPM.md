@@ -1,6 +1,7 @@
 # Denoising Diffusion Probabilistic Models (DDPM)
 
 DDPM（去噪扩散概率模型）是一类生成模型，通过逐步向数据中添加噪声并学习逆过程来实现高质量的数据生成。其核心思想包括：
+
 - **前向加噪过程（Forward Process）**：逐步将数据加噪，最终变为高斯噪声。
 - **反向去噪过程（Reverse Process）**：训练一个神经网络逐步去噪，恢复原始数据。
 
@@ -53,6 +54,29 @@ $$
 $$
 q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t I)
 $$
+
+
+上述两个分布通过重参数化，就可以得到
+
+
+$$
+x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
+$$
+
+
+$$
+x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
+$$
+
+这两个公式了。
+
+```
+前向过程中，需要掌握的公式：
+$$
+x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
+$$
+
+```
 
 ---
 
