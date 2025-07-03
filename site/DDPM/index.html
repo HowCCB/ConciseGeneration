@@ -747,6 +747,14 @@
 </ul>
 <hr />
 <h2 id="1-forward-process">1. 前向加噪过程（Forward Process）</h2>
+<p>前向过程中，需要掌握的公式：</p>
+<p><mark>
+$$
+x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
+$$</p>
+<p>这个公式就是代码中，给<span class="arithmatex">\(x_0\)</span>进行加噪使用到的公式。
+</mark></p>
+<p>后面内容为详细些的解释，可以忽略掉不看。</p>
 <p>前向过程是一个马尔可夫链（Markov Chain）过程。假设原始数据为 <span class="arithmatex">\(x_0\)</span>，每一步加噪如下：</p>
 <div class="arithmatex">\[
 x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
@@ -790,13 +798,6 @@ x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
 x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
 \]</div>
 <p>这两个公式了。</p>
-<p>前向过程中，需要掌握的公式：</p>
-<p><mark>
-$$
-x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
-$$</p>
-<p>这个公式就是代码中，给<span class="arithmatex">\(x_0\)</span>进行加噪使用到的公式。
-</mark></p>
 <hr />
 <h2 id="2-reverse-process">2. 反向去噪过程（Reverse Process）</h2>
 
