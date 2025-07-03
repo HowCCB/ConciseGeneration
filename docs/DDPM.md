@@ -70,10 +70,10 @@ $$
 
 这两个公式了。
 
-```
 前向过程中，需要掌握的公式：
 
 <mark>
+$$
 x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \, \epsilon_t
 $$
 
