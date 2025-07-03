@@ -33,6 +33,7 @@ x_t = sqrt(alpha_bar_t) * x_0 + sqrt(1 - alpha_bar_t) * epsilon_t
 ```
 
 其中：
+
 - x_0：初始的干净图像或数据。
 - alpha_bar_t：前向扩散过程中从初始到第 t 步的累积噪声系数，定义为 alpha_bar_t = prod_{s=1}^t (1 - beta_s)。
 - epsilon_t：从标准正态分布中采样的噪声项。
@@ -53,6 +54,4 @@ q(x_t | x_{t-1}) = N(x_t; sqrt(1 - beta_t) * x_{t-1}, beta_t * I)
 ```
 
 ---
-
-> 注：如需公式渲染效果，请在 mkdocs.yml 中启用 `pymdownx.arithmatex` 或 `pymdownx.superfences` 插件，或直接用上述文本公式表达。
 
