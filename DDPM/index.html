@@ -818,15 +818,15 @@ x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
    根据前向扩散过程的推导，反向过程的均值和方差可以表示为：
    $$
    \mu_\theta(x_t, t) = \frac{1}{\sqrt{\alpha_t}} \left( x_t - \frac{1 - \alpha_t}{\sqrt{1 - \bar{\alpha}<em>t}} \epsilon</em>\theta(x_t, t) \right)
-   $$
-   $$
+   $$</p>
+</li>
+</ol>
+<p>$$
    \Sigma_\theta(x_t, t) = \beta_t I
    $$
    其中：</p>
-</li>
-<li>
-<p><span class="arithmatex">\(\alpha_t = 1 - \beta_t\)</span> 是前向扩散过程中的系数。</p>
-</li>
+<ul>
+<li><span class="arithmatex">\(\alpha_t = 1 - \beta_t\)</span> 是前向扩散过程中的系数。</li>
 <li><span class="arithmatex">\(\bar{\alpha}_t = \prod_{s=1}^t (1 - \beta_s)\)</span> 是累积噪声系数。</li>
 <li>
 <p><span class="arithmatex">\(\epsilon_\theta(x_t, t)\)</span> 是模型预测的噪声项 [[6]]。</p>
@@ -839,7 +839,7 @@ x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
    $$
    其中 <span class="arithmatex">\(x_T\)</span> 是纯噪声输入 [[8]]。</p>
 </li>
-</ol>
+</ul>
 <p>通过这些公式，反向过程能够从纯噪声 $ x_T $ 逐步去噪生成 $ x_{T-1}, x_{T-2}, \cdots, x_0 $，最终得到生成的样本 $ x_0 $ [[10]]。</p>
 
 
