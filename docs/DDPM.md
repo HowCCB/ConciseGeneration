@@ -96,6 +96,7 @@ $$
    p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))
    $$
    其中：
+
    - $ \mu_\theta(x_t, t) $ 是模型预测的均值。
    - $ \Sigma_\theta(x_t, t) $ 是模型预测的方差，实验中，可以设置为固定值或者学习值。
 
@@ -108,6 +109,7 @@ $$
    \Sigma_\theta(x_t, t) = \beta_t I
    $$
    其中：
+   
    - $ \alpha_t = 1 - \beta_t $ 是前向扩散过程中的系数。
    - $ \bar{\alpha}_t = \prod_{s=1}^t (1 - \beta_s) $ 是累积噪声系数。
    - $ \epsilon_\theta(x_t, t) $ 是模型预测的噪声项 [[6]]。
