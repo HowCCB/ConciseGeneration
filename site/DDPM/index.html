@@ -808,10 +808,10 @@ x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
    其中：</p>
 </li>
 <li>
-<p>$ \mu_\theta(x_t, t) $ 是模型预测的均值。</p>
+<p><span class="arithmatex">\(\mu_\theta(x_t, t)\)</span> 是模型预测的均值。</p>
 </li>
 <li>
-<p>$ \Sigma_\theta(x_t, t) $ 是模型预测的方差，实验中，可以设置为固定值或者学习值。</p>
+<p><span class="arithmatex">\(\Sigma_\theta(x_t, t)\)</span> 是模型预测的方差，实验中，可以设置为固定值或者学习值。</p>
 </li>
 <li>
 <p><strong>均值和方差的具体形式</strong>：
@@ -825,11 +825,11 @@ x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
    其中：</p>
 </li>
 <li>
-<p>$ \alpha_t = 1 - \beta_t $ 是前向扩散过程中的系数。</p>
+<p><span class="arithmatex">\(\alpha_t = 1 - \beta_t\)</span> 是前向扩散过程中的系数。</p>
 </li>
-<li>$ \bar{\alpha}<em>t = \prod</em>{s=1}^t (1 - \beta_s) $ 是累积噪声系数。</li>
+<li><span class="arithmatex">\(\bar{\alpha}_t = \prod_{s=1}^t (1 - \beta_s)\)</span> 是累积噪声系数。</li>
 <li>
-<p>$ \epsilon_\theta(x_t, t) $ 是模型预测的噪声项 [[6]]。</p>
+<p><span class="arithmatex">\(\epsilon_\theta(x_t, t)\)</span> 是模型预测的噪声项 [[6]]。</p>
 </li>
 <li>
 <p><strong>初始分布</strong>：
@@ -837,7 +837,7 @@ x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \, \epsilon_t
    $$
    x_T \sim \mathcal{N}(0, I)
    $$
-   其中 $ x_T $ 是纯噪声输入 [[8]]。</p>
+   其中 <span class="arithmatex">\(x_T\)</span> 是纯噪声输入 [[8]]。</p>
 </li>
 </ol>
 <p>通过这些公式，反向过程能够从纯噪声 $ x_T $ 逐步去噪生成 $ x_{T-1}, x_{T-2}, \cdots, x_0 $，最终得到生成的样本 $ x_0 $ [[10]]。</p>
