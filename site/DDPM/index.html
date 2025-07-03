@@ -741,10 +741,12 @@
 <p>实际上，因为前后两项之间的依赖关系，可以得到 x_t 和 x_0 之间的关系，在实际的代码中，也是如此操作的：</p>
 <pre><code>x_t = sqrt(alpha_bar_t) * x_0 + sqrt(1 - alpha_bar_t) * epsilon_t
 </code></pre>
-<p>其中：
-- x_0：初始的干净图像或数据。
-- alpha_bar_t：前向扩散过程中从初始到第 t 步的累积噪声系数，定义为 alpha_bar_t = prod_{s=1}^t (1 - beta_s)。
-- epsilon_t：从标准正态分布中采样的噪声项。</p>
+<p>其中：</p>
+<ul>
+<li>x_0：初始的干净图像或数据。</li>
+<li>alpha_bar_t：前向扩散过程中从初始到第 t 步的累积噪声系数，定义为 alpha_bar_t = prod_{s=1}^t (1 - beta_s)。</li>
+<li>epsilon_t：从标准正态分布中采样的噪声项。</li>
+</ul>
 <p>x_t 与 x_0 和 x_{t-1} 的分布关系如下：</p>
 <ol>
 <li>从 x_0 得到 x_t 的分布：</li>
@@ -757,9 +759,6 @@
 <pre><code>q(x_t | x_{t-1}) = N(x_t; sqrt(1 - beta_t) * x_{t-1}, beta_t * I)
 </code></pre>
 <hr />
-<blockquote>
-<p>注：如需公式渲染效果，请在 mkdocs.yml 中启用 <code>pymdownx.arithmatex</code> 或 <code>pymdownx.superfences</code> 插件，或直接用上述文本公式表达。</p>
-</blockquote>
 
 
 
