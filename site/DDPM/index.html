@@ -61,6 +61,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#denoising-diffusion-probabilistic-models-ddpm" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -345,6 +350,21 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    DDPM
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -357,6 +377,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-forward-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 前向加噪过程（Forward Process）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-reverse-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 反向去噪过程（Reverse Process）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ddpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. DDPM 采样流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 代码简例（PyTorch）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -639,6 +723,61 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-forward-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 前向加噪过程（Forward Process）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-reverse-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 反向去噪过程（Reverse Process）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-ddpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. DDPM 采样流程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 代码简例（PyTorch）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -654,9 +793,89 @@
 
 
 
-  <h1>DDPM</h1>
+<h1 id="denoising-diffusion-probabilistic-models-ddpm">Denoising Diffusion Probabilistic Models (DDPM)</h1>
+<p>DDPM（去噪扩散概率模型）是一类生成模型，通过逐步向数据中添加噪声并学习逆过程来实现高质量的数据生成。其核心思想包括：
+- <strong>前向加噪过程（Forward Process）</strong>：逐步将数据加噪，最终变为高斯噪声。
+- <strong>反向去噪过程（Reverse Process）</strong>：训练一个神经网络逐步去噪，恢复原始数据。</p>
+<hr />
+<h2 id="1-forward-process">1. 前向加噪过程（Forward Process）</h2>
+<p>前向过程是一个马尔可夫链（Markov Chain）过程。假设原始数据为 <span class="arithmatex">\(x_0\)</span>，每一步加噪如下：</p>
+<div class="arithmatex">\[
+x_t = \sqrt{1-\beta_t} x_{t-1} + \sqrt{\beta_t} \epsilon_t
+\]</div>
+<p>其中各符号的意义如下：</p>
+<ul>
+<li>$ x_t $：第 $ t $ 步加噪后的图像或数据。</li>
+<li>$ x_{t-1} $：第 $ t-1 $ 步的图像或数据。</li>
+<li>$ \beta_t $：预定义的噪声调度参数（variance schedule），表示第 $ t $ 步添加噪声的比例 [[2]]。</li>
+<li>$ \epsilon_t $：从标准正态分布中采样的噪声项，即 $ \epsilon_t \sim \mathcal{N}(0, I) $ [[6]]。</li>
+</ul>
+<p>其中 <span class="arithmatex">\(\epsilon_t \sim \mathcal{N}(0, I)\)</span>，<span class="arithmatex">\(\beta_t\)</span> 是预设的噪声调度表。经过 <span class="arithmatex">\(T\)</span> 步后，<span class="arithmatex">\(x_T\)</span> 近似为标准高斯分布。</p>
+<p>实际上，因为前后两项之间的依赖关系，可以得到<span class="arithmatex">\(xt\)</span>和<span class="arithmatex">\(x_0\)</span>之间的关系，在实际的代码中，也是如此操作的。</p>
+<div class="arithmatex">\[
+x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon_t
+\]</div>
+<p>其中：
+- $ x_t $：第 $ t $ 步加噪后的图像或数据 [[4]]。
+- $ x_0 $：初始的干净图像或数据 [[6]]。
+- $ \bar{\alpha}<em>t $：前向扩散过程中从初始到第 $ t $ 步的累积噪声系数，定义为 $ \bar{\alpha}_t = \prod</em>{s=1}^t (1 - \beta_s) $，其中 $ \beta_s $ 是每一步的噪声调度参数 [[9]]。
+- $ \epsilon_t $：从标准正态分布中采样的噪声项，即 $ \epsilon_t \sim \mathcal{N}(0, I) $ [[6]]。</p>
+<p>$ x_t <span class="arithmatex">\(与\)</span> x_0 <span class="arithmatex">\(和\)</span>x_{t-1}$分布之间的关系，符合下面两个公式，下面这两个公式可以通过重采样得到上面的两个加噪公式。</p>
+<p>在 DDPM 中，$ x_t $ 与 $ x_0 $ 和 $ x_{t-1} $ 的分布关系可以通过以下两个公式表示：</p>
+<ol>
+<li><strong>从 $ x_0 $ 得到 $ x_t $ 的分布</strong>：
+   $$
+   q(x_t | x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} x_0, (1 - \bar{\alpha}_t) I)
+   $$
+   其中：</li>
+<li>$ \bar{\alpha}<em>t = \prod</em>{s=1}^{t} (1 - \beta_s) $ 是从初始到第 $ t $ 步的累积噪声系数 [[9]]。</li>
+<li>
+<p>$ \mathcal{N}(\cdot; \mu, \Sigma) $ 表示均值为 $ \mu $、协方差为 $ \Sigma $ 的高斯分布。</p>
+</li>
+<li>
+<p><strong>从 $ x_{t-1} $ 得到 $ x_t $ 的分布</strong>：
+   $$
+   q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1 - \beta_t} x_{t-1}, \beta_t I)
+   $$
+   其中：</p>
+</li>
+<li>$ \beta_t $ 是第 $ t $ 步的噪声调度参数 [[2]]。</li>
+</ol>
+<p>这两个分布描述了前向扩散过程中，如何通过逐步添加高斯噪声将 $ x_0 $ 或 $ x_{t-1} $ 转换为 $ x_t $。并且可以通过重参数化技巧采样得到 $ x_t $ [[1]]。</p>
+<h2 id="2-reverse-process">2. 反向去噪过程（Reverse Process）</h2>
+<p>反向过程同样是马尔可夫链，但参数未知，需要用神经网络 <span class="arithmatex">\(\epsilon_\theta\)</span> 进行建模：</p>
+<div class="arithmatex">\[
+p_\theta(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))
+\]</div>
+<p>训练目标是最小化预测噪声与真实噪声的均方误差（MSE）：</p>
+<div class="arithmatex">\[
+L_{simple} = \mathbb{E}_{x_0, \epsilon, t} \left[ \| \epsilon - \epsilon_\theta(x_t, t) \|^2 \right]
+\]</div>
+<hr />
+<h2 id="3-ddpm">3. DDPM 采样流程</h2>
+<ol>
+<li>从高斯噪声 <span class="arithmatex">\(x_T \sim \mathcal{N}(0, I)\)</span> 开始</li>
+<li>依次用神经网络预测噪声，逐步去噪 <span class="arithmatex">\(x_{T-1}, x_{T-2}, ..., x_0\)</span></li>
+<li><span class="arithmatex">\(x_0\)</span> 即为生成样本</li>
+</ol>
+<hr />
+<h2 id="4-pytorch">4. 代码简例（PyTorch）</h2>
+<pre><code class="language-python"># 前向加噪
+x_t = sqrt_alpha_cumprod[t] * x_0 + sqrt_one_minus_alpha_cumprod[t] * torch.randn_like(x_0)
 
-
+# 反向去噪（伪代码）
+for t in reversed(range(T)):
+    pred_noise = model(x_t, t)
+    x_t = ... # 按论文公式更新
+</code></pre>
+<hr />
+<h2 id="5">5. 参考文献</h2>
+<ul>
+<li><a href="https://arxiv.org/abs/2006.11239">Ho et al., 2020. Denoising Diffusion Probabilistic Models</a></li>
+<li><a href="https://github.com/hojonathanho/diffusion">DDPM 代码实现（PyTorch）</a></li>
+</ul>
+<hr />
+<p>DDPM 是现代扩散模型的基础，后续如 DDIM、Stable Diffusion 等均在此基础上发展。</p>
 
 
 
